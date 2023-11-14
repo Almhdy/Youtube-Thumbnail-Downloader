@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name:       Youtube Thumbnail Downloader
  * Plugin URI:
@@ -15,4 +16,4 @@ if (!defined('ABSPATH')) {
   // Prevent Direct Access To Your Plugin
   die;
 }
-require_once 'inc/shortcode.php';
+require_once 'functions.php';
