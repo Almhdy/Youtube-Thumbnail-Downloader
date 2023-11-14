@@ -20,7 +20,7 @@ div.big-box {
   div.contents {
     img {
       max-width: 100%;
-      height: 200px;
+      height: 200px !important;
       border-radius: 5px;
       margin: auto;
       display: block;
@@ -32,11 +32,18 @@ input#submit-button {
   @media (max-width: 767.98px) {
     width: 100%;
   }
+  padding: 0.5rem 1rem;
   margin: auto;
   border-radius: 0;
   width: 30%;
 }
 input#video_url {
+  @media (max-width: 767.98px) {
+    width: 100%;
+  }
+  padding: 0.5rem 1rem;
+  border: 1px solid;
+  width: 70%;
   border-radius: 0;
   border-color: #db2823;
 }
