@@ -19,27 +19,28 @@ function get_data()
 {
   $video_url = $_POST['videoUrl'];
   $url = filter_var($video_url, FILTER_SANITIZE_URL);
-  if (!empty($url)) {
-    if (strpos($url, 'youtube.com') !== false) {
+
+  if (empty($url) || strpos($url, 'youtube.com') === false || strpos($url, 'youtu.be') === false) {
+    // Shorts
+    if (strpos($url, 'youtube.com') !== false && strpos($url, '/shorts/') !== false) {
+      $url1 = parse_url($url, PHP_URL_PATH);
+      $url2 = explode("/shorts/", $url1, 2);
+      $imgId = $url2[1];
+      echo $imgId;
+    }
+    // youtube.com
+    if (strpos($url, 'youtube.com') !== false && strpos($url, '/shorts/') === false) {
       $url1 = parse_url($url, PHP_URL_QUERY);
       parse_str($url1, $url2);
       $imgId = $url2['v'];
-      if (!empty($imgId)) {
-        echo $imgId;
-      } else {
-        echo 0;
-      }
-    } elseif (strpos($url, 'youtu.be') !== false) {
+      echo $imgId;
+    }
+    // youtu.be
+    if (strpos($url, 'youtu.be') !== false) {
       $url1 = parse_url($url, PHP_URL_PATH);
       $url2 = trim($url1, '/');
       $imgId = $url2;
-      if (!empty($imgId)) {
-        echo $imgId;
-      } else {
-        echo 0;
-      }
-    } else {
-      echo 0;
+      echo $imgId;
     }
   } else {
     echo 0;
