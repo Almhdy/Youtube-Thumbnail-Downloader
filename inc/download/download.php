@@ -4,7 +4,8 @@ if (isset($_GET['url']) && strpos($_GET['url'], 'i.ytimg.com') == true) {
     ob_start();
     // Build Query URL
     $url = $_GET['url'];
-    $content_type = 'getyoutubethumbnails.com-image.jpg';
+    $domain = $_SERVER['HTTP_HOST'];
+    $content_type = $domain . '-image.jpg';
     // Force download
     header('Content-Description: File Transfer');
     header('Content-Type: application/octet-stream');
